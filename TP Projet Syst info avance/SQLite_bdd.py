@@ -23,7 +23,6 @@ def creer_base_de_donnees():
             montant REAL NOT NULL
         )
     ''')
-
-    # N'oubliez pas de valider les changements dans la base de données
+    # Enregistrement
     conn.commit()
     conn.close()

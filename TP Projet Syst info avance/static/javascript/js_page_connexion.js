@@ -25,7 +25,7 @@ function connexion() {
     //localStorage.setItem('nom_bdd', nom_utilisateur);
     // forcer la casse des lettres en miniscule pour eviter les bugs au nveau de la bdd
     var mot_de_passe = document.getElementById('password').value;
-    localStorage.setItem('mot_de_passe', mot_de_passe);
+    //localStorage.setItem('mot_de_passe', mot_de_passe);
     // Nome du hôte de la base de données doit être le même que le nom du service de la BDD
     //const host = "localhost"; //const host = "image_bdd";
     //localStorage.setItem('host', host);
@@ -48,7 +48,7 @@ function connexion() {
             throw new Error('Erreur lors de la connexion.');
         })
         .then(data => {
-                    window.location.href ="page_accueil";
+                    window.location.href ="page_transaction";
                      
         })
         .catch(erreur => {

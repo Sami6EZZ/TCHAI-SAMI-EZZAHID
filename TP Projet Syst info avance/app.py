@@ -8,6 +8,10 @@ from SQLite_bdd import creer_base_de_donnees
 from UAPI_blueprint.F_pages_web import navigation
 from UAPI_blueprint.F_inscription import route_inscription
 from UAPI_blueprint.F_connexion import route_connexion
+from UAPI_blueprint.F_transaction import route_transaction
+from UAPI_blueprint.F_historique import route_historique
+from UAPI_blueprint.F_solde import route_solde
+from UAPI_blueprint.F_historique_user import route_filtre
 
 
 
@@ -35,73 +39,13 @@ app.register_blueprint(route_inscription)
 
 app.register_blueprint(route_connexion)
 
+app.register_blueprint(route_transaction)
 
-# (A1) Enregistrer une transaction
-@app.route('/enregistrer_transaction', methods=['POST'])
-def enregistrer_transaction():
-    data = request.get_json()
-    sender = data['sender']
-    receiver = data['receiver']
-    amount = data['amount']
+app.register_blueprint(route_historique)
 
-    conn = sqlite3.connect('tchai.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO transactions (sender, receiver, amount)
-        VALUES (?, ?, ?)
-    ''', (sender, receiver, amount))
-    conn.commit()
-    conn.close()
+app.register_blueprint(route_solde)
 
-    return jsonify({"message": "Transaction enregistrée avec succès"}), 201
-
-# (A2) Afficher une liste de toutes les transactions dans l’ordre chronologique
-@app.route('/toutes_transactions', methods=['GET'])
-def toutes_transactions():
-    conn = sqlite3.connect('tchai.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT * FROM transactions
-        ORDER BY timestamp
-    ''')
-    transactions = cursor.fetchall()
-    conn.close()
-
-    return jsonify({"transactions": transactions})
-
-# (A3) Afficher une liste des transactions dans l’ordre chronologique liées à une personne donnée
-@app.route('/transactions_personne/<personne>', methods=['GET'])
-def transactions_personne(personne):
-    conn = sqlite3.connect('tchai.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT * FROM transactions
-        WHERE sender = ? OR receiver = ?
-        ORDER BY timestamp
-    ''', (personne, personne))
-    transactions = cursor.fetchall()
-    conn.close()
-
-    return jsonify({"transactions": transactions})
-
-# (A4) Afficher le solde du compte de la personne donnée
-@app.route('/solde/<personne>', methods=['GET'])
-def solde_personne(personne):
-    conn = sqlite3.connect('tchai.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT (SUM(amount) FILTER (WHERE sender = ?) - SUM(amount) FILTER (WHERE receiver = ?)) AS solde
-        FROM transactions
-    ''', (personne, personne))
-    solde = cursor.fetchone()[0]
-    conn.close()
-
-    return jsonify({"solde": solde})
-
-
-
-# ... (autres configurations Flask)
-
+app.register_blueprint(route_filtre)
 
 
 
