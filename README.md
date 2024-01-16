@@ -101,6 +101,16 @@ cursor.execute('SELECT date_heure, expediteur, recepteur, montant FROM transacti
 
 - Nous utilisant le terminal pour se connecter à la bdd sqlite3 et récupérer une ligne pour determiner la valeur de la clé primaire. en suite , la requete suivant met ajour les données sans que cette fail soit detécter par notre système : 
 
+
+````shell
+PS C:\Users\test\Desktop\TP Projet Syst info avance> sqlite3 tchai.db "SELECT * FROM transactions ORDER BY date_heure DESC LIMIT 1;"
+17|sami|sami_recep|2024-01-14 18:11:26|0.04
+PS C:\Users\test\Desktop\TP Projet Syst info avance> sqlite3 tchai.db "UPDATE transactions SET montant = 150.0 WHERE id = 17;"
+PS C:\Users\test\Desktop\TP Projet Syst info avance> sqlite3 tchai.db "SELECT * FROM transactions ORDER BY date_heure DESC LIMIT 1;"
+17|sami|sami_recep|2024-01-14 18:11:26|150.0
+PS C:\Users\test\Desktop\TP Projet Syst info avance>
+````
+
 ![Page Connexion/Inscription](TP_Tchai/images_exo_4/im_2.png)
 
 
