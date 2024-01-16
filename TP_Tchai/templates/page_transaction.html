@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tchai Transactions</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/css_page_transaction.css') }}">
+
+   
+</head>
+<body>
+    <video autoplay  loop muted plays-inline class="video">
+        <source src="{{url_for('static', filename='video_background/CUP_OF_TEA_ANIMATED_BACKGROUNDS.mp4')}}"  alt="background" type="video/mp4">
+    </video>
+
+    <h1>Welcome To Tchai Transactions Platform</h1>
+
+    <div id="transaction-form">
+        <h2>Enregistrer une transaction</h2>
+        <form id="form">
+            <input type="text" id="expediteur"  readonly>
+            <input type="text" id="recepteur" placeholder="Nom du récepteur" required>
+            <input type="text" id="montant" placeholder="Montant en €" pattern="\d+(\.\d{1,2})?" required>
+            <div id="solde-container">Votre solde : <span id="solde"></span> €</div>
+            <button  id="btn_trans" onclick="enregistrerTransaction()">ENREGISTRER</button>
+        </form>
+        <hr class="horizontal-line">
+        <button id="btn_hist" onclick="afficherHistorique()">HISTORIQUE</button>
+    </div>
+
+   
+       
+    <script  src="{{ url_for('static', filename='javascript/js_page_transaction.js') }}"></script>
+    <!-- lien vers SweetAlert2 L -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+</body>
+</html>
