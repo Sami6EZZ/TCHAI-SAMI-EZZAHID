@@ -3,6 +3,8 @@ import sqlite3
 from datetime import datetime
 
 import hashlib
+import uuid
+
 
 route_transaction = Blueprint("F_transaction", __name__)
 
@@ -49,8 +51,15 @@ def enregistrer_utilisateur():
         ''', (montant, recepteur))
 
         # Insérez la nouvelle transaction dans la base de données
+        
+        # Récupérez le hash de la dernière transaction
+        cursor.execute('SELECT hash FROM transactions ORDER BY date_heure DESC LIMIT 1')
+        dernier_hash = cursor.fetchone()
+        dernier_hash = dernier_hash[0] if dernier_hash else str(uuid.uuid4())  # Utilisez un UUID si c'est la première transaction
 
-        hash_input =  f"{expediteur}_{recepteur}_{temps}_{montant}".encode('utf-8')
+        # Concaténez le hash précédent avec les autres données de la transaction
+        hash_input = f"{dernier_hash}_{expediteur}_{recepteur}_{temps}_{montant}".encode('utf-8')
+
         # Utiliser l'algorithme SHA-256 pour calculer le hash
         sha256 = hashlib.sha256()
         sha256.update(hash_input)
