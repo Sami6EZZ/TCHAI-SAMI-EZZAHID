@@ -38,13 +38,13 @@ Cette étape est essentielle pour initialiser les soldes des utilisateurs.
 
 Voici la page de connexion/inscription qui permet de faire les deux tâches dans la même page grâce à un curseur :
 
-![Page Connexion/Inscription avec Curseur](images_exo_3/im_2.png)
+![Page Connexion/Inscription avec Curseur](TP_Tchai/images_exo_3/im_2.png)
 
 #### (A1) - (A4) : Enregistrement d'une transaction 
 
 Voici la page d'enregistrement des transactions :
 
-![Page Enregistrement Transactions](images_exo_3/im_3.png)
+![Page Enregistrement Transactions](TP_Tchai/images_exo_3/im_3.png)
 
 La page d'enregistrement des transactions comprend :
 - Un formulaire pour saisir le nom de l'expéditeur (prédéfini depuis la phase de connexion), le nom du récepteur et le montant de la transaction.
@@ -58,7 +58,7 @@ Lorsque la fonction "enregistrerTransaction()" est déclenchée, les données so
 
 Voici la page de l'historique des transactions :
 
-![Page Historique Transactions](images_exo_3/im_4.png)
+![Page Historique Transactions](TP_Tchai/images_exo_3/im_4.png)
 
 La page affiche dans une table les données retournées par la route Flask "route_historique". La page possède également un input situé au-dessus de la table pour entrer le nom de l'utilisateur et filtrer les transactions affichées liées à un certain utilisateur.
 
