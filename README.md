@@ -61,7 +61,7 @@ def creer_base_de_donnees():
     # Enregistrement
     conn.commit()
     conn.close()
-'''
+```
 </pre>
 
 ![Page Connexion/Inscription](TP_Tchai/images_exo_3/im_1.png)
