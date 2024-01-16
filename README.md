@@ -63,7 +63,6 @@ def creer_base_de_donnees():
     conn.close()
 ````
 
-![Page Connexion/Inscription](TP_Tchai/images_exo_3/im_1.png)
 
 Voici la page de connexion/inscription qui permet de faire les deux tâches dans la même page grâce à un curseur :
 
@@ -110,7 +109,6 @@ PS C:\Users\test\Desktop\TP Projet Syst info avance> sqlite3 tchai.db "SELECT * 
 PS C:\Users\test\Desktop\TP Projet Syst info avance>
 ````
 
-![Page Connexion/Inscription](TP_Tchai/images_exo_4/im_2.png)
 
 
 ## Tchaî V_2
