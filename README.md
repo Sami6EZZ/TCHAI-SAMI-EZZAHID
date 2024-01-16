@@ -34,7 +34,7 @@ Nous commençons par définir une page de **connexion/inscription** pour enregis
 
 Cette étape est essentielle pour initialiser les soldes des utilisateurs.
 
-![Page Connexion/Inscription](images_exo_3/im_1.png)
+![Page Connexion/Inscription](TP_Tchai/images_exo_3/im_1.png)
 
 Voici la page de connexion/inscription qui permet de faire les deux tâches dans la même page grâce à un curseur :
 
