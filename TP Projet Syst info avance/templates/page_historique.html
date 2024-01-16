@@ -15,7 +15,7 @@
 <div class="container">
     <div class="header">
         <div class="left-header">
-            <span>Historique des transactions : </span>
+            <span>Historique des transactions :  </span>
             <span id="filter">Tout</span>
         </div>
         <div class="right-header">
@@ -38,8 +38,16 @@
             </tbody>
         </table>
     </div>
+    <div id="transactions-frauduleuses" style="display: none;">
+        <h3>Transactions Frauduleuses : </h3>
+        <div id="liste-transactions-frauduleuses"></div>
+    </div>
+    <button id="btn-verifier" onclick="verifierTransactions()">Vérifier les transactions</button>
 </div>
 
 <script  src="{{ url_for('static', filename='javascript/js_page_historique.js') }}"></script>
+<!-- lien vers SweetAlert2 L -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 </html>

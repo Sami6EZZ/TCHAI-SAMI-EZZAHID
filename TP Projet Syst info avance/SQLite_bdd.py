@@ -9,20 +9,22 @@ def creer_base_de_donnees():
         CREATE TABLE IF NOT EXISTS utilisateurs (
             nom  TEXT UNIQUE PRIMARY KEY NOT NULL,
             password TEXT NOT NULL,
-            solde REAL DEFAULT 0.0
+            solde REAL DEFAULT 0.00
         )
     ''')
 
-    # Création de la table des transactions
+    # Création de la table des transactions (on défini le montant avec decimal et non pas real ôur éviter la suppréssion des zéros après la virgule)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS transactions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            hash TEXT NOT NULL PRIMARY KEY ,
             expediteur TEXT NOT NULL,
             recepteur TEXT NOT NULL,
             date_heure DATETIME NOT NULL,
-            montant REAL NOT NULL
+            montant FLOAT NOT NULL
         )
     ''')
     # Enregistrement
     conn.commit()
     conn.close()
+
+creer_base_de_donnees()

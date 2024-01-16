@@ -2,7 +2,7 @@ from flask import Flask,Blueprint, request, jsonify, session
 import sqlite3
 from datetime import datetime
 
-
+import hashlib
 
 route_transaction = Blueprint("F_transaction", __name__)
 
@@ -49,10 +49,16 @@ def enregistrer_utilisateur():
         ''', (montant, recepteur))
 
         # Insérez la nouvelle transaction dans la base de données
+
+        hash_input =  f"{expediteur}_{recepteur}_{temps}_{montant}".encode('utf-8')
+        # Utiliser l'algorithme SHA-256 pour calculer le hash
+        sha256 = hashlib.sha256()
+        sha256.update(hash_input)
+        hash = sha256.hexdigest() 
         cursor.execute('''
-            INSERT INTO transactions (expediteur, recepteur, date_heure, montant)
-            VALUES (?, ?, ?, ?)
-        ''', (expediteur, recepteur, temps, montant))
+            INSERT INTO transactions (hash, expediteur, recepteur, date_heure, montant)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (hash, expediteur, recepteur, temps, montant))
 
         # Validez la transaction dans la base de données
         conn.commit()

@@ -12,6 +12,7 @@ from UAPI_blueprint.F_transaction import route_transaction
 from UAPI_blueprint.F_historique import route_historique
 from UAPI_blueprint.F_solde import route_solde
 from UAPI_blueprint.F_historique_user import route_filtre
+from UAPI_blueprint.F_verification import route_verificateur
 
 
 
@@ -46,6 +47,8 @@ app.register_blueprint(route_historique)
 app.register_blueprint(route_solde)
 
 app.register_blueprint(route_filtre)
+
+app.register_blueprint(route_verificateur)
 
 
 

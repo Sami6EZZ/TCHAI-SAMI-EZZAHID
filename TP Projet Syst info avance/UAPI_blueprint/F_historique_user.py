@@ -5,7 +5,7 @@ route_filtre = Blueprint("F_histirique_user", __name__)
 
 @route_filtre.route('/verifier_utilisateur', methods=['GET'])
 def verifier_utilisateur():
-    utilisateur = request.args.get('utilisateur', '').strip().lower()
+    utilisateur = request.args.get('utilisateur', '').strip()
     
     try:
         conn = sqlite3.connect('tchai.db')
@@ -24,7 +24,7 @@ def verifier_utilisateur():
 
 @route_filtre.route('/charger_transactions_utilisateur', methods=['GET'])
 def charger_transactions_utilisateur():
-    utilisateur = request.args.get('utilisateur', '').strip().lower()
+    utilisateur = request.args.get('utilisateur', '').strip()
 
     try:
         conn = sqlite3.connect('tchai.db')

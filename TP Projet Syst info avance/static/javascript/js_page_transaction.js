@@ -27,7 +27,8 @@ function enregistrerTransaction() {
     document.body.style.cursor = "progress";
     var expediteur = localStorage.getItem('nom_utilisateur');
     var recepteur = document.getElementById('recepteur').value;
-    var montant = document.getElementById('montant').value;
+    var montantInput = document.getElementById('montant');
+    var montant = parseFloat(montantInput.value).toFixed(2);
    
     // Construire l'objet avec les données à envoyer
     var transactionData = {

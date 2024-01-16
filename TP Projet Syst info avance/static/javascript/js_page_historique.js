@@ -34,7 +34,9 @@ function chargerTransactions() {
 }
 
 // Mettez à jour la liste des transactions lors du chargement initial de la page
-chargerTransactions();
+document.addEventListener('DOMContentLoaded', function () {
+    chargerTransactions();
+});
 
 
 
@@ -77,3 +79,38 @@ utilisateurInput.addEventListener('change', function (event) {
     const utilisateur = this.value.trim();
     afficherHistoriqueFiltre(utilisateur);
 });
+
+
+// fonction de vérification des transactions
+function verifierTransactions() {
+    fetch('/verifier_transactions')
+        .then(response => response.json())
+        .then(data => {
+            const transactionsFrauduleusesDiv = document.getElementById('transactions-frauduleuses');
+            const listeTransactionsFrauduleusesDiv = document.getElementById('liste-transactions-frauduleuses');
+
+            // Afficher ou masquer l'élément selon la présence de transactions frauduleuses
+            transactionsFrauduleusesDiv.style.display = data.transactions_frauduleuses.length > 0 ? 'block' : 'none';
+
+            if (data.transactions_frauduleuses.length === 0) {
+                // Transactions validées
+                afficherPopup('Transactions validées', 'success');
+            } else {
+                // Transactions frauduleuses détectées
+                afficherPopup('Transactions frauduleuses détectées', 'error');
+                // Afficher la liste des transactions frauduleuses
+                listeTransactionsFrauduleusesDiv.textContent = data.transactions_frauduleuses.map(transaction => JSON.stringify(transaction)).join('\n');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors de la vérification des transactions :', error);
+        });
+}
+function afficherPopup(message, type) {
+    Swal.fire({
+        title: message,
+        icon: type,
+        showConfirmButton: false,
+        timer: 3000
+    });
+}
