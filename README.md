@@ -79,5 +79,5 @@ cursor.execute('SELECT date_heure, expediteur, recepteur, montant FROM transacti
 
 ## Exercice 6 : Hashage
 
-
+- Nous ajoutons maintenant le hashage d'une transaction dans son tuple. Nous utilisons le hashage  
 
