@@ -33,8 +33,8 @@ Nous commençons par définir une page de **connexion/inscription** pour enregis
 - Un mot de passe.
 
 Cette étape est essentielle pour initialiser les soldes des utilisateurs.
-<pre>
-```python
+
+````python
 def creer_base_de_donnees():
     conn = sqlite3.connect('tchai.db')
     cursor = conn.cursor()
@@ -61,8 +61,7 @@ def creer_base_de_donnees():
     # Enregistrement
     conn.commit()
     conn.close()
-```
-</pre>
+````
 
 ![Page Connexion/Inscription](TP_Tchai/images_exo_3/im_1.png)
 
