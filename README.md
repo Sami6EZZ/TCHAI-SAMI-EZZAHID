@@ -72,7 +72,7 @@ cursor.execute('SELECT date_heure, expediteur, recepteur, montant FROM transacti
 
 - Nous utilisant le terminal pour se connecter à la bdd sqlite3 et récupérer une ligne pour determiner la valeur de la clé primaire. en suite , la requete suivant met ajour les données sans que cette fail soit detécter par notre système : 
 
-c:\Users\test\Desktop\TP Projet Syst info avance\images_exo_4\im_2.png
+![Page Connexion/Inscription](TP_Tchai/images_exo_4/im_1.png)
 
 
 ## Tchaî V_2
